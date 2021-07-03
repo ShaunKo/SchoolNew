@@ -39,7 +39,6 @@ export default class HomePage extends Component {
         let a = Object.values(snapshot.val());
         let b = a.map(function (item, index, array) {
           let c = Object.values(item);
-          console.log(c, 'shaun')
           return c
         });
         let arr = [];
@@ -85,7 +84,7 @@ export default class HomePage extends Component {
               }} />
             </View>
             <View style={{ width: width / 3, alignItems: 'center', justifyContent: 'center' }}>
-              <Text style={{ fontSize: 18, padding: 5, color: 'black' }}>校園小霸王</Text>
+              <Text style={{ fontSize: 18, padding: 5, color: 'black' }}>夢想公佈欄</Text>
             </View>
             <View style={{ width: width / 3, padding: 10, alignItems: 'flex-end' }} />
           </View>

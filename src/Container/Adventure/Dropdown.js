@@ -39,10 +39,8 @@ export default class Dropdown extends Component {
         console.log(this.props.data)
         if (this.props.data !== undefined && this.props.data !== '') {
             let arrData = this.props.data[0].data;
-            console.log(arrData, 'shaun543')
             let data = arrData.filter((item, index, array) => {
                 return item.indexOf(text) !== -1;
-                //return uppercasePlan.indexOf(uppercaseFliter) !== -1;
             });
             let newData = []
             if (this.props.switch === 'school') {

@@ -60,7 +60,6 @@ export default class PlanDetails extends Component {
         let year = new Date(finishTime).getFullYear();
         let month = new Date(finishTime).getMonth() + 1;
         let day = new Date(finishTime).getDate();
-        console.log(finishTime, 'shaun7777')
         return (
 
             <SafeAreaView >
@@ -99,7 +98,7 @@ export default class PlanDetails extends Component {
 
                     <Text style={{ marginLeft: 10, marginTop: 10, fontSize: 18 }}>募資金額：</Text>
                     <View style={{ margin: 10, backgroundColor: 'black', borderRadius: 5 }}>
-                        <Text style={{ color: 'white', fontSize: 15, padding: 5, margin: 10 }}>???/600</Text>
+                        <Text style={{ color: 'white', fontSize: 15, padding: 5, margin: 10 }}>0/{price}</Text>
                     </View>
 
                     <TouchableOpacity style={styles.delete} onPress={async ()=>{

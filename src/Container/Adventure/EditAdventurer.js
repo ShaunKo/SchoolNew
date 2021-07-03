@@ -76,7 +76,7 @@ export default class EditAdventurer extends Component {
             description: '', // 描述
             price: 0,
             finishTime: Date.now() + 2592000000,
-            arrSchool: '', 
+            arrSchool: '',
 
             imageType: '', // 判別上傳哪張圖
             idFrontUrl: '',
@@ -98,7 +98,7 @@ export default class EditAdventurer extends Component {
             this.setState({ checkImage: data.checkImage });
         })
 
-        this.setState({arrSchool: school});
+        this.setState({ arrSchool: school });
     }
 
 
@@ -228,7 +228,6 @@ export default class EditAdventurer extends Component {
 
 
     render() {
-        console.log(school,'shaun555')
         return (
             <SafeAreaView>{/*#46A3FF blue*/}
 
@@ -267,7 +266,7 @@ export default class EditAdventurer extends Component {
                                 this.setState({ isSchoolOpen: !this.state.isSchoolOpen });
                             }}>
                             <Text style={{ fontSize: 18 }}>{this.state.school}</Text>
-                            <Icon name="keyboard-arrow-down" style={styles.icon} />
+                            {/* <Icon name="keyboard-arrow-down" style={styles.icon} /> */}
                         </TouchableOpacity>
                         <Dropdown
                             switch="school"
@@ -287,7 +286,7 @@ export default class EditAdventurer extends Component {
                                 this.setState({ isMajorOpen: !this.state.isMajorOpen });
                             }}>
                             <Text style={{ fontSize: 18 }}>{this.state.myMajor}</Text>
-                            <Icon name="keyboard-arrow-down" style={styles.icon} />
+                            {/* <Icon name="keyboard-arrow-down" style={styles.icon} /> */}
                         </TouchableOpacity>
                         <Dropdown
                             switch="major"
@@ -376,22 +375,22 @@ export default class EditAdventurer extends Component {
                     </View>
                     <View style={{ paddingLeft: 10, paddingRight: 10 }}>
                         {Platform.OS === 'ios' ?
-                        <DateTimePicker
-                            value={new Date(this.state.finishTime)}
-                            mode={Platform.OS === 'ios' ? 'datetime' : 'date'}
-                            is24Hour={true}
-                            display="default"
-                            // 多30天（2592000000毫秒）
-                            minimumDate={Date.now() + 2592000000}
-                            onChange={(event, selectedDate) => {
-                                let finishTime = Date.parse(selectedDate);
-                                this.setState({ finishTime: finishTime });
-                            }}
-                            locale="zh"
-                        />:
-                        <TouchableOpacity onPress={()=>{this.setState({timeModal: true})}}>
-                            <Text>選擇時間</Text>
-                        </TouchableOpacity>
+                            <DateTimePicker
+                                value={new Date(this.state.finishTime)}
+                                mode={Platform.OS === 'ios' ? 'datetime' : 'date'}
+                                is24Hour={true}
+                                display="default"
+                                // 多30天（2592000000毫秒）
+                                minimumDate={Date.now() + 2592000000}
+                                onChange={(event, selectedDate) => {
+                                    let finishTime = Date.parse(selectedDate);
+                                    this.setState({ finishTime: finishTime });
+                                }}
+                                locale="zh"
+                            /> :
+                            <TouchableOpacity onPress={() => { this.setState({ timeModal: true }) }}>
+                                <Text>選擇時間</Text>
+                            </TouchableOpacity>
                         }
                     </View>
                     {/* 上傳照片二階段 
@@ -468,24 +467,25 @@ export default class EditAdventurer extends Component {
                                                     maxWidth: 200,
                                                 },
                                                 (response) => {
-                                                    //setResponse(response);
-                                                    let res = response.assets.find(function (item, index, array) {
-                                                        console.log(item.uri, 'shaun567')
-                                                        return item;
-                                                    });
+                                                    if (response.assets !== undefined) {
+                                                        //setResponse(response);
+                                                        let res = response.assets.find(function (item, index, array) {
+                                                            return item;
+                                                        });
 
-                                                    let state = {};
-                                                    if (this.state.imageType === PHOTOTYPE.IDCARDFRONT) {
-                                                        state.idFrontUrl = res.uri;
-                                                    } else if (this.state.imageType === PHOTOTYPE.IDCARDBACK) {
-                                                        state.idBackUrl = res.uri;
-                                                    } else if (this.state.imageType === PHOTOTYPE.INSURANCECARD) {
-                                                        state.insuranceUrl = res.uri;
-                                                    } else if (this.state.imageType === PHOTOTYPE.STUDENTCARD) {
-                                                        state.studentUrl = res.uri;
+                                                        let state = {};
+                                                        if (this.state.imageType === PHOTOTYPE.IDCARDFRONT) {
+                                                            state.idFrontUrl = res.uri;
+                                                        } else if (this.state.imageType === PHOTOTYPE.IDCARDBACK) {
+                                                            state.idBackUrl = res.uri;
+                                                        } else if (this.state.imageType === PHOTOTYPE.INSURANCECARD) {
+                                                            state.insuranceUrl = res.uri;
+                                                        } else if (this.state.imageType === PHOTOTYPE.STUDENTCARD) {
+                                                            state.studentUrl = res.uri;
+                                                        }
+                                                        state.isVisible = false;
+                                                        this.setState(state);
                                                     }
-                                                    state.isVisible = false;
-                                                    this.setState(state);
                                                 },
                                             )
                                         }}
@@ -504,23 +504,25 @@ export default class EditAdventurer extends Component {
                                                 },
                                                 (response) => {
                                                     //setResponse(response);
-                                                    let res = response.assets.find(function (item, index, array) {
-                                                        console.log(item.uri, 'shaun567')
-                                                        return item;
-                                                    });
+                                                    console.log(response, 'shaun')
+                                                    if (response.assets !== undefined) {
+                                                        let res = response.assets.find(function (item, index, array) {
+                                                            return item;
+                                                        });
 
-                                                    let state = {};
-                                                    if (this.state.imageType === PHOTOTYPE.IDCARDFRONT) {
-                                                        state.idFrontUrl = res.uri;
-                                                    } else if (this.state.imageType === PHOTOTYPE.IDCARDBACK) {
-                                                        state.idBackUrl = res.uri;
-                                                    } else if (this.state.imageType === PHOTOTYPE.INSURANCECARD) {
-                                                        state.insuranceUrl = res.uri;
-                                                    } else if (this.state.imageType === PHOTOTYPE.STUDENTCARD) {
-                                                        state.studentUrl = res.uri;
+                                                        let state = {};
+                                                        if (this.state.imageType === PHOTOTYPE.IDCARDFRONT) {
+                                                            state.idFrontUrl = res.uri;
+                                                        } else if (this.state.imageType === PHOTOTYPE.IDCARDBACK) {
+                                                            state.idBackUrl = res.uri;
+                                                        } else if (this.state.imageType === PHOTOTYPE.INSURANCECARD) {
+                                                            state.insuranceUrl = res.uri;
+                                                        } else if (this.state.imageType === PHOTOTYPE.STUDENTCARD) {
+                                                            state.studentUrl = res.uri;
+                                                        }
+                                                        state.isVisible = false;
+                                                        this.setState(state);
                                                     }
-                                                    state.isVisible = false;
-                                                    this.setState(state);
                                                 },
                                             )
                                         }}

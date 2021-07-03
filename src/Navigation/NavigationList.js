@@ -21,7 +21,7 @@ export default class NavigationList extends Component {
                             iconName = focused
                               ? 'account-box'
                               : 'perm-identity';
-                          } else if (route.name === '首頁') {
+                          } else if (route.name === '公佈欄') {
                             iconName = focused ? 'house' : 'roofing';
                           } else if (route.name === 'Cart') {
                             iconName = focused ? 'add-shopping-cart' : 'shopping-cart';
@@ -38,7 +38,7 @@ export default class NavigationList extends Component {
                           backgroundColor: 'black',
                         }
                       }}>
-                    <Tab.Screen name="首頁" component={HomeStack} />
+                    <Tab.Screen name="公佈欄" component={HomeStack} />
                     <Tab.Screen name="冒險者" component={AdventurerStack} />
                     {/* <Tab.Screen name="Cart" component={Cart} /> */}
                 </Tab.Navigator>

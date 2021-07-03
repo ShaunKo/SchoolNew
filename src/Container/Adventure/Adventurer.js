@@ -71,10 +71,8 @@ export default class Adventurer extends Component {
                         {/*flatlist 點擊詳細資料*/}
                         <View style={{ backgroundColor: 'white', height: 100 + '%' }}>
                             <FlatList
-
                                 data={this.state.planData}
                                 renderItem={(item, index) => {
-                                    console.log(item, 'shaun999')
                                     var time = item.item.time;
                                     var d = new Date(time);
                                     var hours = d.getHours()

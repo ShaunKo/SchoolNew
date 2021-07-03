@@ -77,9 +77,9 @@ export default class Order extends Component {
                 }}>
                     <View style={{flex:3}}>
                         <Text style={{ fontSize: 18, padding: 20 }}>募資金額：</Text>
-                        <Text style={{ fontSize: 25, fontWeight: 'bold', padding: 10, }}>＄ 5000 / {price}</Text>
+                        <Text style={{ fontSize: 25, fontWeight: 'bold', padding: 10, }}>＄ 0 / {price}</Text>
                     </View>
-                    <TouchableOpacity style={{
+                    {/* <TouchableOpacity style={{
                         flex:1,
                         height: 60,
                         width: 60,
@@ -96,7 +96,7 @@ export default class Order extends Component {
                         // shadowRadius: 1.5,
                     }}>
                         <Text style={{ alignSelf: 'center', color: 'white', fontWeight: 'bold', fontSize: 30 }}>+</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
 
                 <ScrollView style={{ backgroundColor: 'white',marginBottom: 220 }}>
